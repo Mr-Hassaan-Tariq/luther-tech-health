@@ -11,3 +11,13 @@ License: GNU General Public License v2 or later
 License URI: LICENSE
 Text Domain: hyperhq
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+/* Mobile breadcrumbs */
+@media screen and (max-width: 768px) {
+    .startup-breadcrumbs-container-mobile{
+        width: 350px !important;
+    }
+    .startup-breadcrumbs-container-mobile span{
+        font-size: 12px !important;
+    }
+}
