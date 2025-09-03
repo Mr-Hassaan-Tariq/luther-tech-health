@@ -15,8 +15,16 @@ Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-com
 
 /* Mobile breadcrumbs */
 
+.submit-button{
+    background-color: #6CE057 !important;
+    color: #152E40 !important;
+}
 .startup-breadcrumbs-container-mobile:hover svg .rect {
   fill: black; /* changes the orange circle background to black */
+}
+
+.ytp-impression-link-content{
+    display: none !important;
 }
 @media screen and (max-width: 768px) {
     .startup-breadcrumbs-container-mobile{
