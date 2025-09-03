@@ -12,7 +12,12 @@ License URI: LICENSE
 Text Domain: hyperhq
 Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
 
+
 /* Mobile breadcrumbs */
+
+.startup-breadcrumbs-container-mobile:hover svg .rect {
+  fill: black; /* changes the orange circle background to black */
+}
 @media screen and (max-width: 768px) {
     .startup-breadcrumbs-container-mobile{
         width: 350px !important;
