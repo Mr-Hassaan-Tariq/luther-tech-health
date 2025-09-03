@@ -1279,18 +1279,33 @@
                   Get started
                 </a>
 
-                <div style="margin-top: -45px" class="testimonials-cta">
-                  <!-- <p>
-                    See our other 200+ reviews on our
-                    <a
-                      href="https://www.facebook.com/hyperhq/reviews"
-                      target="_blank"
-                      >Facebook page</a
-                    >
-                  </p> -->
+                <div
+                  class="testimonials-cta"
+                  style="
+                    margin-top: -45px;
+                    text-align: center; /* For mobile centering */
+                  "
+                >
                   Enhance your clinic’s digital presence and start attracting
                   more patients today
                 </div>
+
+                <script>
+                  (function () {
+                    const cta = document.querySelector(".testimonials-cta");
+                    function adjustCta() {
+                      if (window.innerWidth < 768) {
+                        cta.style.marginTop = "10px";
+                        cta.style.textAlign = "center";
+                      } else {
+                        cta.style.marginTop = "-45px";
+                        cta.style.textAlign = "left";
+                      }
+                    }
+                    window.addEventListener("resize", adjustCta);
+                    adjustCta();
+                  })();
+                </script>
               </div>
             </div>
           </section>
