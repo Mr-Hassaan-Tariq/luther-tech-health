@@ -1898,7 +1898,7 @@
             </div>
           </section>
 
-          <section class="section process">
+          <section style="margin-top: -200px" class="section process">
             <div class="process-outer">
               <div class="process-container">
                 <div class="process-header transition-top">
@@ -1932,13 +1932,13 @@
                             width="42"
                             height="42"
                             rx="21"
-                            fill="#214248"
+                            fill="black"
                           />
                           <path
                             fill-rule="evenodd"
                             clip-rule="evenodd"
                             d="M26.9932 16.5488C26.9932 15.9998 26.5493 15.5528 25.9993 15.5498L18.0062 15.4998H18.0003C17.4503 15.4998 17.0043 15.9438 17.0003 16.4938C16.9963 17.0458 17.4413 17.4968 17.9943 17.4998L23.5522 17.5348L15.2932 25.7928C14.9022 26.1838 14.9022 26.8168 15.2932 27.2068C15.4882 27.4028 15.7442 27.4998 16.0002 27.4998C16.2563 27.4998 16.5122 27.4028 16.7072 27.2068L24.9952 18.9188L25.0002 24.5008C25.0002 25.0528 25.4482 25.4998 26.0002 25.4998H26.0013C26.5533 25.4998 27.0002 25.0508 27.0002 24.4988L26.9932 16.5488Z"
-                            fill="#231F20"
+                            fill="black"
                           />
                           <mask
                             id="mask0_1515_22503"
@@ -2043,6 +2043,21 @@
               </div>
             </div>
           </section>
+
+          <script>
+            (function () {
+              const processSection = document.querySelector(".section.process");
+              function adjustProcessMargin() {
+                if (window.innerWidth < 768) {
+                  processSection.style.marginTop = "0px";
+                } else {
+                  processSection.style.marginTop = "-200px";
+                }
+              }
+              window.addEventListener("resize", adjustProcessMargin);
+              adjustProcessMargin();
+            })();
+          </script>
 
           <script>
             document.addEventListener("DOMContentLoaded", function () {
