@@ -972,12 +972,11 @@
         <div id="smooth-content">
           <section class="section banner transition-top">
             <div class="banner-outer">
-              <div class="banner-container">
+              <div style="padding-bottom: 150px" class="banner-container">
                 <div class="banner-header">
                   <div class="heading">
                     <h1>Book more patients every month with predictability</h1>
                   </div>
-
                   <div>
                     <p>
                       Driving patient bookings through smart design and
@@ -988,7 +987,6 @@
 
                 <div class="banner-cta">
                   <a href="start/index.html">Get started</a>
-
                   <div class="cta-text">
                     <p>
                       Our 12 week Accelerate Process has helped 100s of business
@@ -1001,27 +999,60 @@
           </section>
 
           <section
-            class="section testimonials transition-top"
-            data-trigger-distance="top 100%"
+            class="section video-section transition-top"
             style="
-              width: 100%;
-              height: 500px;
-              max-width: 900px;
-              margin: 0 auto;
-              display: block;
+              max-width: 1200px;
+              width: 90%;
+              margin: -150px auto 0;
               border-radius: 10px;
+              overflow: hidden;
               box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+              display: block;
             "
           >
-            <iframe
-              src="https://www.youtube.com/embed/swE8cjgAyac?si=1GXHYGTnCsHl_fAZ"
-              title="YouTube video player"
-              style="border: 0; border-radius: 10px"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allowfullscreen
-            ></iframe>
+            <div
+              style="
+                position: relative;
+                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                height: 0;
+                overflow: hidden;
+              "
+            >
+              <iframe
+                src="https://www.youtube.com/embed/swE8cjgAyac?si=1GXHYGTnCsHl_fAZ"
+                title="YouTube video player"
+                style="
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  border: 0;
+                "
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
           </section>
+
+          <script>
+            // Adjust width dynamically based on screen size
+            (function () {
+              const section = document.querySelector(".video-section");
+              function adjustWidth() {
+                if (window.innerWidth < 768) {
+                  section.style.width = "90%";
+                  section.style.margin = "20px auto 0";
+                } else {
+                  section.style.width = "100%";
+                  section.style.margin = "-150px auto 0";
+                }
+              }
+              window.addEventListener("resize", adjustWidth);
+              adjustWidth();
+            })();
+          </script>
 
           <section
             class="section testimonials transition-top"
