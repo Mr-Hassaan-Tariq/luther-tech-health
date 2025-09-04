@@ -2381,7 +2381,11 @@
               <div class="footer-container">
                 <div class="footer-main">
                   <div class="footer-left">
-                    <div class="footer-company">
+                    <div
+                      style="margin-bottom: 30px"
+                      class="footer-company"
+                      id="footerCompany"
+                    >
                       <div class="logo">
                         <a
                           href="/index.html"
@@ -2390,14 +2394,14 @@
                           ><img
                             width="828"
                             height="166"
-                            src="wp-content/uploads/2025/04/Logo.svg"
+                            src="wp-content/uploads/2025/04/Logo-Mobile.svg"
                             class="custom-logo"
                             alt="Hyper"
                             decoding="async"
                             srcset="
-                              wp-content/uploads/2025/04/Logo.svg         828w,
-                              wp-content/uploads/2025/04/Logo-300x60.svg  300w,
-                              wp-content/uploads/2025/04/Logo-768x154.svg 768w
+                              wp-content/uploads/2025/04/Logo-Mobile.svg         828w,
+                              wp-content/uploads/2025/04/Logo-Mobile-300x60.svg  300w,
+                              wp-content/uploads/2025/04/Logo-Mobile-768x154.svg 768w
                             "
                             sizes="(max-width: 828px) 100vw, 828px"
                         /></a>
@@ -2408,7 +2412,7 @@
                     </div>
 
                     <div class="social-links">
-                      <a
+                      <!-- <a
                         href="https://www.facebook.com/hyperhq"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -2426,7 +2430,7 @@
                             fill="#0B0D0F"
                           ></path>
                         </svg>
-                      </a>
+                      </a> -->
                       <a
                         href="https://www.instagram.com/teamhyper/"
                         target="_blank"
@@ -2492,7 +2496,11 @@
                   </div>
 
                   <div class="footer-links">
-                    <div class="footer-column">
+                    <div
+                      id="footerColumn"
+                      style="margin-bottom: 30px"
+                      class="footer-column"
+                    >
                       <h4>Company</h4>
                       <ul>
                         <li>
@@ -2512,7 +2520,11 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="footer-column">
+                    <div
+                      id="footerColumn"
+                      style="margin-bottom: 30px"
+                      class="footer-column"
+                    >
                       <h4>Resources</h4>
                       <ul>
                         <li>
@@ -2532,7 +2544,11 @@
                         </li>
                       </ul>
                     </div>
-                    <div class="footer-column">
+                    <div
+                      id="footerColumn"
+                      style="margin-bottom: 30px"
+                      class="footer-column"
+                    >
                       <h4>Help</h4>
                       <ul>
                         <li>
@@ -2553,19 +2569,39 @@
                   </div>
                 </div>
 
+                <script>
+                  (function () {
+                    if (window.innerWidth <= 768) {
+                      document.getElementById(
+                        "footerCompany"
+                      ).style.marginBottom = "30px";
+                    }
+                  })();
+                </script>
+
+                <script>
+                  (function () {
+                    if (window.innerWidth <= 768) {
+                      document.getElementById(
+                        "footerColumn"
+                      ).style.marginBottom = "30px";
+                    }
+                  })();
+                </script>
+
                 <div class="footer-bottom">
                   <div class="site-details">
                     <p class="site">Luther Tech Ltd</p>
                     <p class="rights">All rights reserved 2025</p>
                   </div>
-
+                  <!-- 
                   <div class="business-details">
                     <p class="abn">
                       First Floor Office, 3 Hornton Place, London, United
                       Kingdom, W8 4LZ<br />
                       Company registration number 10216070
                     </p>
-                  </div>
+                  </div> -->
                 </div>
               </div>
             </div>
