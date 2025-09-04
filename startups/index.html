@@ -1142,6 +1142,7 @@
           </section> -->
 
           <section
+            style="padding-top: 35px"
             class="section testimonials transition-top"
             data-trigger-distance="top 100%"
           >
@@ -1194,9 +1195,15 @@
                             </p>
                           </div>
                           <div class="testimonials-profile">
+                            <div class="testimonials-image-wrapper">
+                              <img
+                                src="../wp-content/uploads/2025/04/Testimonial1.png"
+                                alt="Sarah M."
+                              />
+                            </div>
                             <div class="testimonials-details">
-                              <p class="name">Tom Brown</p>
-                              <p class="company">Beny</p>
+                              <p class="name">Sarah M.</p>
+                              <p class="company">Opine</p>
                             </div>
                           </div>
                         </div>
@@ -1247,9 +1254,15 @@
                             </p>
                           </div>
                           <div class="testimonials-profile">
+                            <div class="testimonials-image-wrapper">
+                              <img
+                                src="../wp-content/uploads/2025/04/Testimonial2.png"
+                                alt="Gabriel M."
+                              />
+                            </div>
                             <div class="testimonials-details">
-                              <p class="name">Ash Brown</p>
-                              <p class="company">Empiraa</p>
+                              <p class="name">Gabriel M.</p>
+                              <p class="company">Enigma</p>
                             </div>
                           </div>
                         </div>
@@ -1300,9 +1313,15 @@
                             </p>
                           </div>
                           <div class="testimonials-profile">
+                            <div class="testimonials-image-wrapper">
+                              <img
+                                src="../wp-content/uploads/2025/04/Testimonial3.png"
+                                alt="Hadley S."
+                              />
+                            </div>
                             <div class="testimonials-details">
-                              <p class="name">Mark Sellar</p>
-                              <p class="company">Kubo</p>
+                              <p class="name">Hadley S.</p>
+                              <p class="company">Reply</p>
                             </div>
                           </div>
                         </div>
@@ -1312,19 +1331,85 @@
                   <div class="swiper-pagination"></div>
                 </div>
 
-                <div class="testimonials-cta">
-                  <p>
-                    See our other 200+ reviews on our
-                    <a
-                      href="https://www.facebook.com/hyperhq/reviews"
-                      target="_blank"
-                      >Facebook page</a
-                    >
-                  </p>
+                <div class="banner-cta">
+                  <a
+                    style="
+                      background-color: #6ce057;
+                      color: black;
+                      font-weight: 500;
+                      width: 218px;
+                      height: 68px;
+                      gap: 8px;
+                      opacity: 1;
+                      border-radius: 12px;
+                      display: flex;
+                      align-items: center;
+                      justify-content: center;
+                      text-decoration: none;
+                    "
+                    href="start/index.html"
+                  >
+                    Get started
+                  </a>
+
+                  <div
+                    class="cta-text"
+                    style="border-bottom: 2px solid #b6b7b7"
+                  >
+                    <p>
+                      Enhance your clinic’s digital presence and start
+                      attracting more patients today
+                    </p>
+                  </div>
                 </div>
+                <!-- <div
+                  class="testimonials-cta"
+                  style="
+                    margin-top: -45px;
+                    text-align: center; 
+                    text-decoration: underline;
+                  "
+                >
+                  Enhance your clinic’s digital presence and start attracting
+                  more patients today
+                </div> -->
+
+                <script>
+                  (function () {
+                    const cta = document.querySelector(".testimonials-cta");
+                    function adjustCta() {
+                      if (window.innerWidth < 768) {
+                        cta.style.marginTop = "-25px";
+                        cta.style.textAlign = "center";
+                      } else {
+                        cta.style.marginTop = "-45px";
+                        cta.style.textAlign = "left";
+                      }
+                    }
+                    window.addEventListener("resize", adjustCta);
+                    adjustCta();
+                  })();
+                </script>
               </div>
             </div>
           </section>
+
+          <script>
+            (function () {
+              const testimonialsSection = document.querySelector(
+                ".section.testimonials"
+              );
+              function adjustPadding() {
+                if (window.innerWidth < 768) {
+                  testimonialsSection.style.paddingTop = "0px";
+                } else {
+                  testimonialsSection.style.paddingTop = "35px";
+                }
+              }
+              window.addEventListener("resize", adjustPadding);
+              adjustPadding();
+            })();
+          </script>
 
           <section class="section startups">
             <div class="startups-outer">
