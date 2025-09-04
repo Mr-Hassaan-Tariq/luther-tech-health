@@ -1030,7 +1030,7 @@
             <div
               style="
                 position: relative;
-                padding-bottom: 56.25%; /* 16:9 aspect ratio */
+                padding-bottom: 56.25%;
                 height: 0;
                 overflow: hidden;
               "
@@ -1070,6 +1070,7 @@
           </script>
 
           <section
+            style="padding-top: 35px"
             class="section testimonials transition-top"
             data-trigger-distance="top 100%"
           >
@@ -1320,6 +1321,23 @@
               </div>
             </div>
           </section>
+
+          <script>
+            (function () {
+              const testimonialsSection = document.querySelector(
+                ".section.testimonials"
+              );
+              function adjustPadding() {
+                if (window.innerWidth < 768) {
+                  testimonialsSection.style.paddingTop = "0px";
+                } else {
+                  testimonialsSection.style.paddingTop = "35px";
+                }
+              }
+              window.addEventListener("resize", adjustPadding);
+              adjustPadding();
+            })();
+          </script>
 
           <section class="section metrics transition-top">
             <div class="metrics-outer">
@@ -1910,7 +1928,7 @@
             </div>
           </section>
 
-          <section style="margin-top: -200px" class="section process">
+          <section class="section process">
             <div class="process-outer">
               <div class="process-container">
                 <div class="process-header transition-top">
@@ -2063,7 +2081,7 @@
                 if (window.innerWidth < 768) {
                   processSection.style.marginTop = "0px";
                 } else {
-                  processSection.style.marginTop = "-200px";
+                  processSection.style.marginTop = "-120px";
                 }
               }
               window.addEventListener("resize", adjustProcessMargin);
