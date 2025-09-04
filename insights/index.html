@@ -854,22 +854,63 @@
         <div class="header-outer">
           <div class="header-container">
             <div class="logo">
-              <a href="../index.html" class="custom-logo-link" rel="home"
-                ><img
-                  width="828"
-                  height="166"
-                  src="../wp-content/uploads/2025/04/Logo.svg"
-                  class="custom-logo"
-                  alt="Hyper"
-                  decoding="async"
-                  srcset="
-                    ../wp-content/uploads/2025/04/Logo.svg         828w,
-                    ../wp-content/uploads/2025/04/Logo-300x60.svg  300w,
-                    ../wp-content/uploads/2025/04/Logo-768x154.svg 768w
-                  "
-                  sizes="(max-width: 828px) 100vw, 828px"
-              /></a>
+              <a
+                href="../index.html"
+                class="custom-logo-link"
+                rel="home"
+                aria-current="page"
+              >
+                <picture>
+                  <!-- Mobile: for screens < 768px -->
+                  <source
+                    media="(max-width: 767px)"
+                    srcset="../wp-content/uploads/2025/04/Logo-Mobile.svg"
+                    type="image/svg+xml"
+                  />
+                  <!-- Desktop / fallback -->
+                  <source
+                    media="(min-width: 768px)"
+                    srcset="
+                      ../wp-content/uploads/2025/04/Logo.svg         828w,
+                      ../wp-content/uploads/2025/04/Logo-768x154.svg 768w,
+                      ../wp-content/uploads/2025/04/Logo-300x60.svg  300w
+                    "
+                    type="image/svg+xml"
+                  />
+                  <!-- Fallback image -->
+                  <img
+                    class="custom-logo"
+                    width="828"
+                    height="166"
+                    src="../wp-content/uploads/2025/04/Logo.svg"
+                    alt="Logo"
+                    decoding="async"
+                    fetchpriority="high"
+                    sizes="(max-width: 828px) 100vw, 828px"
+                    style="
+                      max-width: 100%;
+                      height: auto;
+                      display: block;
+                      align-items: center;
+                    "
+                  />
+                </picture>
+              </a>
             </div>
+
+            <style>
+              .custom-logo {
+                max-width: 180px;
+                height: auto;
+              }
+
+              @media (max-width: 768px) {
+                .custom-logo {
+                  max-width: 40px !important;
+                  height: auto !important;
+                }
+              }
+            </style>
             <div class="menu-links">
               <!-- <a href="../accelerate/index.html" class="menu-item">
               Our process
