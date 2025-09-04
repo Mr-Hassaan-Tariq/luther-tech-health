@@ -1303,7 +1303,7 @@
                   <div class="swiper-pagination"></div>
                 </div>
 
-                <div class="banner-cta">
+                <div class="banner-cta" id="banner-cta">
                   <a
                     style="
                       background-color: #6ce057;
@@ -1328,12 +1328,13 @@
                     class="cta-text"
                     style="border-bottom: 2px solid #b6b7b7"
                   >
-                    <p>
+                    <p style="text-align: center">
                       Enhance your clinic’s digital presence and start
                       attracting more patients today
                     </p>
                   </div>
                 </div>
+
                 <!-- <div
                   class="testimonials-cta"
                   style="
@@ -1348,10 +1349,20 @@
 
                 <script>
                   (function () {
+                    var banner = document.getElementById("banner-cta");
+                    if (window.innerWidth <= 767) {
+                      banner.style.marginTop = "50px";
+                    } else {
+                      banner.style.marginTop = "0px";
+                    }
+                  })();
+                </script>
+
+                <script>
+                  (function () {
                     const cta = document.querySelector(".testimonials-cta");
                     function adjustCta() {
                       if (window.innerWidth < 768) {
-                        cta.style.marginTop = "-25px";
                         cta.style.textAlign = "center";
                       } else {
                         cta.style.marginTop = "-45px";
