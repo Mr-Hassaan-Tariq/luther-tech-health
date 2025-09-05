@@ -358,10 +358,9 @@ Reach more patients and streamline your practice growth</h1>
                         const phone = encodeURIComponent(form.querySelector('[name="your-phone"]').value);
                         const fullName = `${firstName} ${lastName}`.trim();
 
-                        // ✅ Add a log to debug the value at submission time
                         console.log("Redirecting with agent:", agent);
 
-                        const baseURL = `https://hyperhq.com`;
+                        const baseURL = `https://luther-tech-health.vercel.app/`;
                         const redirectURL = `${baseURL}/start/book-meeting?agent=${agent}&fullname=${fullName}&email=${email}&phone=${phone}`;
                         window.location.href = redirectURL;
                       }
