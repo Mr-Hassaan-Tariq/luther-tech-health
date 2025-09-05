@@ -1149,14 +1149,31 @@
                         height: 600px;
                         position: relative;
                         overflow: hidden;
+                        text-align: center;
                       "
                     >
                       <img
+                        id="sidebar-image"
                         src="../../wp-content/uploads/2025/04/Diprobase_CS_2.png"
                         alt=""
-                        style="width: 100%; height: 100%"
+                        style="width: 100%; height: 100%; object-fit: cover"
                       />
                     </div>
+
+                    <style>
+                      @media (max-width: 768px) {
+                        #sidebar-image-wrapper {
+                          height: auto !important;
+                        }
+                        #sidebar-image {
+                          width: 50% !important;
+                          height: auto !important;
+                          display: block;
+                          margin: 0 auto;
+                          object-fit: contain;
+                        }
+                      }
+                    </style>
 
                     <script>
                       if (window.innerWidth <= 768) {
