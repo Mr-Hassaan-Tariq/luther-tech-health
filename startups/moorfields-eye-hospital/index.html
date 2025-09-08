@@ -951,9 +951,9 @@
               Our process
             </a> -->
               <a href="../index.html" class="menu-item active"> Portfolio </a>
-              <a href="../../insights/index.html" class="menu-item">
+              <!-- <a href="../../insights/index.html" class="menu-item">
                 Insights
-              </a>
+              </a> -->
               <!-- <a
               href="https://apollo.hyperhq.com/feed"
               class="menu-item"
@@ -1010,7 +1010,7 @@
               Our process
             </a> -->
             <a href="../index.html" class="menu-item active"> Portfolio </a>
-            <a href="../../insights/index.html" class="menu-item"> Insights </a>
+            <!-- <a href="../../insights/index.html" class="menu-item"> Insights </a> -->
             <!-- <a
               href="https://apollo.hyperhq.com/feed"
               class="menu-item"
@@ -1463,6 +1463,8 @@
             </div>
           </section>
 
+          <script src="../../config.js"></script>
+
           <script>
             const form = document.getElementById("intro-request-form");
             const nameInput = document.getElementById("full_name");
@@ -1531,6 +1533,11 @@
               );
             });
 
+            const env =
+              window.APP_CONFIG.ENV === "staging"
+                ? window.APP_CONFIG.STAGING
+                : window.APP_CONFIG.PRODUCTION;
+
             submitBtn.addEventListener("click", async () => {
               const isNameValid = validateField("full_name");
               const isEmailValid = validateField("email");
@@ -1550,16 +1557,11 @@
               };
 
               try {
-                const response = await fetch(
-                  "https://luther-tech-health-pdmd.vercel.app/send-email",
-                  {
-                    method: "POST",
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(formData),
-                  }
-                );
+                const response = await fetch(`${env.API_BASE}/send-email`, {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(formData),
+                });
 
                 const result = await response.json();
 
