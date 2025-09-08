@@ -1463,6 +1463,7 @@
             const form = document.getElementById("intro-request-form");
             const nameInput = document.getElementById("full_name");
             const emailInput = document.getElementById("email");
+            const phoneInput = document.getElementById("phone_number");
 
             const fields = {
               full_name: {
@@ -1481,6 +1482,15 @@
                 validate: (value) =>
                   value.trim() !== "" &&
                   /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim()),
+              },
+              phone_number: {
+                input: phoneInput,
+                item: document.getElementById("phone_item"),
+                errors: [
+                  document.getElementById("phone_error"),
+                  document.getElementById("phone_number_format_error"),
+                ],
+                validate: (value) => /^[0-9+\-\s]{8,15}$/.test(value.trim()),
               },
             };
 
@@ -1513,14 +1523,11 @@
             document
               .getElementById("submit_button")
               .addEventListener("click", () => {
-                const startup = form.getAttribute("data-startup");
-                const name = nameInput.value.trim();
-                const email = emailInput.value.trim();
-
                 const isNameValid = validateField("full_name");
                 const isEmailValid = validateField("email");
+                const isPhoneValid = validateField("phone_number");
 
-                if (isNameValid && isEmailValid) {
+                if (isNameValid && isEmailValid && isPhoneValid) {
                   const url = new URL(
                     "https://gethyper.typeform.com/founder-intro"
                   );
