@@ -1129,6 +1129,20 @@
                           <input
                             class="wpcf7-form-control wpcf7-submit has-spinner"
                             type="submit"
+                            style="
+                              background-color: #6ce057;
+                              color: black;
+                              font-weight: 500;
+                              width: 218px;
+                              height: 68px;
+                              gap: 8px;
+                              opacity: 1;
+                              border-radius: 12px;
+                              display: flex;
+                              align-items: center;
+                              justify-content: center;
+                              text-decoration: none;
+                            "
                             value="Book a time with us"
                           />
                         </p>
@@ -1141,6 +1155,93 @@
                   </div>
 
                   <!-- Redirect Script -->
+
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      const form = document.querySelector(".wpcf7-form");
+                      if (!form) return;
+
+                      const responseDiv = form.querySelector(
+                        ".wpcf7-response-output"
+                      );
+                      const submitButton = form.querySelector(".wpcf7-submit");
+
+                      form.addEventListener("submit", async function (e) {
+                        e.preventDefault(); // Prevent default form submission
+                        responseDiv.textContent = ""; // Clear previous messages
+                        responseDiv.style.color = "black";
+
+                        // Get form values
+                        const firstName = form
+                          .querySelector('[name="first-name"]')
+                          .value.trim();
+                        const lastName = form
+                          .querySelector('[name="last-name"]')
+                          .value.trim();
+                        const email = form
+                          .querySelector('[name="your-email"]')
+                          .value.trim();
+                        const phone = form
+                          .querySelector('[name="your-phone"]')
+                          .value.trim();
+                        const fullName = `${firstName} ${lastName}`.trim();
+
+                        // Basic validation
+                        if (!firstName || !lastName || !email || !phone) {
+                          responseDiv.textContent = "Please fill all fields.";
+                          responseDiv.style.color = "red";
+                          return;
+                        }
+
+                        submitButton.disabled = true;
+                        submitButton.value = "Sending...";
+
+                        const formData = {
+                          to: "jj@luther.tech",
+                          subject: "New Callback Request",
+                          html: `
+                                <h2>New Callback Request</h2>
+                                <p><strong>Name:</strong> ${fullName}</p>
+                                <p><strong>Email:</strong> ${email}</p>
+                                <p><strong>Phone:</strong> ${phone}</p>
+                              `,
+                        };
+
+                        try {
+                          const response = await fetch(
+                            "https://luther-tech-health-pdmd.vercel.app/send-email",
+                            {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify(formData),
+                            }
+                          );
+
+                          const result = await response.json();
+
+                          if (response.ok) {
+                            responseDiv.textContent =
+                              "Your request has been sent successfully!";
+                            responseDiv.style.color = "green";
+                            form.reset();
+                          } else {
+                            responseDiv.textContent =
+                              "Failed to send request: " +
+                              (result.error || "Unknown error");
+                            responseDiv.style.color = "red";
+                          }
+                        } catch (error) {
+                          console.error("Error sending request:", error);
+                          responseDiv.textContent =
+                            "Something went wrong. Please try again later.";
+                          responseDiv.style.color = "red";
+                        } finally {
+                          submitButton.disabled = false;
+                          submitButton.value = "Book a time with us";
+                        }
+                      });
+                    });
+                  </script>
                   <script>
                     document.addEventListener('wpcf7mailsent', function(event) {
                       if (event.detail.contactFormId == ) {

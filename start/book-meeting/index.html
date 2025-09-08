@@ -996,25 +996,26 @@
               </div>
             </div>
           </section>
-          <!-- 
+
           <script>
             window.addEventListener("message", function (event) {
               if (event.origin.includes("calendly.com")) {
                 if (event.data.event === "calendly.event_scheduled") {
                   console.log("A meeting was scheduled!");
 
-                  const csLink = "index.html//calendly.com/hyper-eu/jamie";
-                  const csName = csLink.split("index.html")[1];
+                  const csLink = "index.html\/\/calendly.com\/hyper-eu\/jamie";
+                  const parts = csLink.split("../../index.html");
+                  const csName = parts[parts.length - 1];
 
-                  // Use absolute path for thank-you page
-                  const baseUrl = "/start/thank-you";
+                  // Use home_url() from PHP to make it portable
+                  const baseUrl = "index.html\/\/hyperhq.com\/start\/thank-you";
 
                   window.location.href =
                     baseUrl + "?cs=" + encodeURIComponent(csName);
                 }
               }
             });
-          </script> -->
+          </script>
 
           <script>
             console.log("Calendly Links Posts:", [
