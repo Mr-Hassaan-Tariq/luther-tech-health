@@ -952,11 +952,40 @@
                 </div>
                 <div class="calendly-embed">
                   <!-- Calendly inline widget begin -->
-                  <div
-                    class="calendly-inline-widget"
-                    data-url="https://calendly.com/luthertech/meeting?hide_gdpr_banner=1"
-                    style="min-width: 320px; height: 700px"
-                  ></div>
+                  <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+                      const urlParams = new URLSearchParams(
+                        window.location.search
+                      );
+                      const fullname = urlParams.get("fullname") || "";
+                      const email = urlParams.get("email") || "";
+                      const phone = urlParams.get("phone") || "";
+
+                      console.log("fullname", fullname, email, phone);
+
+                      // Construct Calendly URL with prefill parameters
+                      const calendlyBase =
+                        "https://calendly.com/luthertech/meeting";
+                      const calendlyUrl = `${calendlyBase}?hide_gdpr_banner=1&name=${encodeURIComponent(
+                        fullname
+                      )}&email=${encodeURIComponent(
+                        email
+                      )}&a1=${encodeURIComponent(phone)}`;
+
+                      // Set the data-url
+                      const widget = document.querySelector(
+                        ".calendly-inline-widget"
+                      );
+                      widget.setAttribute("data-url", calendlyUrl);
+
+                      // Load Calendly widget
+                      const script = document.createElement("script");
+                      script.src =
+                        "https://assets.calendly.com/assets/external/widget.js";
+                      script.async = true;
+                      document.body.appendChild(script);
+                    });
+                  </script>
                   <script
                     type="text/javascript"
                     src="https://assets.calendly.com/assets/external/widget.js"
