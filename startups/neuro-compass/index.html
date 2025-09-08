@@ -1150,7 +1150,7 @@
                         id="sidebar-image"
                         src="../../wp-content/uploads/2025/04/Neuro-Compass_CS_2.png"
                         alt=""
-                        style="width: 100%; height: 100%; object-fit: cover"
+                        style="width: 100%; height: 100%"
                       />
                     </div>
 
@@ -1338,20 +1338,19 @@
           <section class="section startup-intro transition-top">
             <div class="startup-intro-outer">
               <div class="startup-intro-container">
-                <h2>Request an call back</h2>
+                <h2>Request a call back</h2>
                 <p>
-                  Whether you’d like to discuss a partnership, propose an
-                  investment or simply find out more information, we will
-                  facilitate a warm introduction for you. Simply enter your
-                  information below and we will call you within 48 business
-                  hours.
+                  Whether you’d like to discuss a partnership, propose a copy
+                  change or simply find out more information, we will facilitate
+                  a warm introduction for you. Simply enter your information
+                  below and we will call you within 48 business hours.
                 </p>
 
                 <div class="startup-intro-form">
                   <form
                     id="intro-request-form"
                     action="#"
-                    data-startup="splend"
+                    data-startup="magic mountain"
                     novalidate
                   >
                     <div class="form-row">
@@ -1361,7 +1360,9 @@
                           id="full_name"
                           class="input-field"
                           placeholder="Full name"
+                          style="width: 250px; text-align: left"
                         />
+
                         <small id="name_error" class="error-message"
                           >Name is required</small
                         >
@@ -1372,19 +1373,41 @@
                           id="email"
                           class="input-field"
                           placeholder="Email"
+                          style="width: 250px; text-align: left"
                         />
+
                         <small id="email_error" class="error-message"
                           >Email is required</small
                         >
-                        <small id="email_format_error" class="error-message"
-                          >Enter a valid email address</small
+                        <small id="email_format_error" class="error-message">
+                          Enter a valid email address
+                        </small>
+                      </div>
+                      <div class="input-item" id="phone_item">
+                        <input
+                          type="text"
+                          id="phone_number"
+                          class="input-field"
+                          placeholder="Phone Number"
+                          style="width: 250px; text-align: left"
+                        />
+                        <small id="phone_error" class="error-message"
+                          >Phone Number is required</small
                         >
+                        <small
+                          id="phone_number_format_error"
+                          class="error-message"
+                        >
+                          Enter a valid phone number
+                        </small>
                       </div>
                     </div>
+
                     <button
                       type="button"
                       id="submit_button"
                       class="submit-button"
+                      style="background-color: #6ce057; color: black"
                     >
                       Request now
                     </button>
