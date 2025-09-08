@@ -292,80 +292,67 @@ Reach more patients and streamline your practice growth</h1>
 </form>
 </div>
 
-                  <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                      // Set agent field value on form submit instead of page load
-                      const formWrapper = document.querySelector('.form-container [data-wpcf7-id]');
-                      if (!formWrapper) return;
-                      const form = formWrapper.querySelector('form');
-                      if (!form) return;
+             <script>
+document.addEventListener('DOMContentLoaded', function() {
+  const formWrapper = document.querySelector('.form-container [data-wpcf7-id]');
+  if (!formWrapper) return;
+  const form = formWrapper.querySelector('form');
+  if (!form) return;
 
-                      form.addEventListener('submit', function() {
-                        const container = form.closest('.form-container');
-                        if (!container) return;
-                        const agentValue = container.getAttribute('data-agent');
-                        const utmSourceValue = container.getAttribute('data-utm-source');
-                        const utmCampaignValue = container.getAttribute('data-utm-campaign');
-                        const utmMediumValue = container.getAttribute('data-utm-medium');
-                        const utmContentValue = container.getAttribute('data-utm-content');
-                        const agentField = form.querySelector('.field-agent');
-                        const utmSourceField = form.querySelector('.field-utm_source');
-                        const utmCampaignField = form.querySelector('.field-utm_campaign');
-                        const utmMediumField = form.querySelector('.field-utm_medium');
-                        const utmContentField = form.querySelector('.field-utm_content');
+  form.addEventListener('submit', async function(event) {
+    event.preventDefault(); 
 
-                        if (agentField && agentValue) {
-                          agentField.value = agentValue;
-                          // Optional: log for debugging
-                          console.log('Agent value set on submit:', agentValue);
-                        }
-                        if (utmSourceField && utmSourceValue) {
-                          utmSourceField.value = utmSourceValue;
-                          // Optional: log for debugging
-                          console.log('UTM Source value set on submit:', utmSourceValue);
-                        }
-                        if (utmCampaignField && utmCampaignValue) {
-                          utmCampaignField.value = utmCampaignValue;
-                          // Optional: log for debugging
-                          console.log('UTM Campaign value set on submit:', utmCampaignValue);
-                        }
-                        if (utmMediumField && utmMediumValue) {
-                          utmMediumField.value = utmMediumValue;
-                          // Optional: log for debugging
-                          console.log('UTM Medium value set on submit:', utmMediumValue);
-                        }
-                        if (utmContentField && utmContentValue) {
-                          utmContentField.value = utmContentValue;
-                          // Optional: log for debugging
-                          console.log('UTM Content value set on submit:', utmContentValue);
-                        }
-                      });
-                    });
+    const firstName = form.querySelector('[name="first-name"]').value.trim();
+    const lastName = form.querySelector('[name="last-name"]').value.trim();
+    const email = form.querySelector('[name="your-email"]').value.trim();
+    const phone = form.querySelector('[name="your-phone"]').value.trim();
+    const agent = form.querySelector('[name="agent"]')?.value || '';
+    const utmSource = form.querySelector('[name="utm_source"]')?.value || '';
+    const utmCampaign = form.querySelector('[name="utm_campaign"]')?.value || '';
+    const utmMedium = form.querySelector('[name="utm_medium"]')?.value || '';
+    const utmContent = form.querySelector('[name="utm_content"]')?.value || '';
 
-                    document.addEventListener('wpcf7mailsent', function(event) {
-                      const formWrapper = document.querySelector('.form-container [data-wpcf7-id]');
-                      if (!formWrapper) return;
+    const fullName = `${firstName} ${lastName}`.trim();
 
-                      const dynamicFormId = parseInt(formWrapper.getAttribute('data-wpcf7-id'), 10);
-                      if (event.detail.contactFormId === dynamicFormId) {
-                        const form = formWrapper.querySelector('form');
+    const emailPayload = {
+      to: 'jj@luther.tech', 
+      subject: 'New Meeting Booking Request',
+      html: `
+        <h2>New Booking Request</h2>
+        <p><strong>Full Name:</strong> ${fullName}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Phone:</strong> ${phone}</p>
+      `
+    };
 
-                        const agentInput = form.querySelector('[name="agent"]');
-                        const agent = encodeURIComponent(agentInput ? agentInput.value : '');
-                        const firstName = encodeURIComponent(form.querySelector('[name="first-name"]').value);
-                        const lastName = encodeURIComponent(form.querySelector('[name="last-name"]').value);
-                        const email = encodeURIComponent(form.querySelector('[name="your-email"]').value);
-                        const phone = encodeURIComponent(form.querySelector('[name="your-phone"]').value);
-                        const fullName = `${firstName} ${lastName}`.trim();
+    try {
+      const response = await fetch('http://localhost:3000/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(emailPayload)
+      });
 
-                        console.log("Redirecting with agent:", agent);
 
-                        const baseURL = `https://luther-tech-health.vercel.app/`;
-                        const redirectURL = `${baseURL}/start/book-meeting?agent=${agent}&fullname=${fullName}&email=${email}&phone=${phone}`;
-                        window.location.href = redirectURL;
-                      }
-                    }, false);
-                  </script>
+      const result = await response.json();
+
+
+      if (response.ok) {
+        const baseURL = `https://luther-tech-health.vercel.app/`;
+        const redirectURL = `${baseURL}/start/book-meeting?agent=${encodeURIComponent(agent)}&fullname=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+        window.location.href = redirectURL;
+      } else {
+        alert('Failed to send booking request: ' + (result.error || 'Unknown error'));
+      }
+    } catch (error) {
+      console.error('Error sending booking request:', error);
+      alert('Something went wrong. Please try again later.');
+    }
+  });
+});
+</script>
+
                               </div>
             </div>
                   
