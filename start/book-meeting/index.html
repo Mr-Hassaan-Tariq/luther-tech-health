@@ -964,18 +964,13 @@
                       );
                       const fullname = urlParams.get("fullname") || "";
                       const email = urlParams.get("email") || "";
-                      const phone = urlParams.get("phone") || "";
-
-                      console.log("fullname", fullname, email, phone);
 
                       // Construct Calendly URL with prefill parameters
                       const calendlyBase =
                         "https://calendly.com/luthertech/meeting";
                       const calendlyUrl = `${calendlyBase}?hide_gdpr_banner=1&name=${encodeURIComponent(
                         fullname
-                      )}&email=${encodeURIComponent(
-                        email
-                      )}&a1=${encodeURIComponent(phone)}`;
+                      )}&email=${encodeURIComponent(email)}`;
 
                       // Set the data-url
                       const widget = document.querySelector(
