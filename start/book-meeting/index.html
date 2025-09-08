@@ -101,7 +101,7 @@
               "sameAs": [
                 "https://www.facebook.com/hyperhq",
                 "https://www.instagram.com/teamhyper",
-                "https://www.youtube.com/@wearehyper",
+                "https://www.youtube.com/@luthertech",
                 "https://www.linkedin.com/company/hyperhq"
               ],
               "logo": {
@@ -874,7 +874,7 @@
                     <!-- Mobile: for screens < 768px -->
                     <source
                       media="(max-width: 767px)"
-                      srcset="../../wp-content/uploads/2025/04/Logo-Mobile.svg"
+                      srcset="../../wp-content/uploads/2025/04/Logo.svg"
                       type="image/svg+xml"
                     />
                     <!-- Desktop / fallback -->
@@ -916,7 +916,7 @@
 
                 @media (max-width: 768px) {
                   .custom-logo {
-                    max-width: 35px !important;
+                    max-width: 180px;
                     height: auto !important;
                     margin-top: 6px;
                   }
@@ -941,6 +941,7 @@
           </div>
         </div>
       </header>
+
       <div id="smooth-wrapper">
         <div id="smooth-content">
           <section class="section calendly-section transition-top">
@@ -1218,7 +1219,7 @@
           </script>
 
           <footer>
-            <div class="footer-outer">
+            <div id="footerOuter" class="footer-outer">
               <div class="footer-container">
                 <div class="footer-main">
                   <div class="footer-left">
@@ -1288,7 +1289,7 @@
                         </svg>
                       </a> -->
                       <a
-                        href="https://www.instagram.com/teamhyper/"
+                        href="https://www.instagram.com/luthertech/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -1307,7 +1308,7 @@
                         </svg>
                       </a>
                       <a
-                        href="https://www.linkedin.com/company/hyperhq/"
+                        href="https://www.linkedin.com/company/luthertech/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -1326,7 +1327,7 @@
                         </svg>
                       </a>
                       <a
-                        href="https://www.youtube.com/@wearehyper"
+                        href="https://www.youtube.com/@luthertech"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -1446,6 +1447,16 @@
               </div>
             </div>
           </footer>
+
+          <script>
+            (function () {
+              if (window.innerWidth > 768) {
+                // Desktop only
+                document.getElementById("footerOuter").style.marginTop =
+                  "100px";
+              }
+            })();
+          </script>
         </div>
       </div>
 
