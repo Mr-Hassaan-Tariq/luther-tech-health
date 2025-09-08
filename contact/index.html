@@ -1159,6 +1159,8 @@
                     </form>
                   </div>
 
+                  <script src="../config.js"></script>
+
                   <!-- Redirect Script -->
 
                   <script>
@@ -1198,6 +1200,11 @@
                           return;
                         }
 
+                        const env =
+                          window.APP_CONFIG.ENV === "staging"
+                            ? window.APP_CONFIG.STAGING
+                            : window.APP_CONFIG.PRODUCTION;
+
                         submitButton.disabled = true;
                         submitButton.value = "Sending...";
 
@@ -1214,7 +1221,7 @@
 
                         try {
                           const response = await fetch(
-                            "https://luther-tech-health-pdmd.vercel.app/send-email",
+                            `${env.API_BASE}/send-email`,
                             {
                               method: "POST",
                               headers: { "Content-Type": "application/json" },
