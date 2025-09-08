@@ -339,9 +339,10 @@ document.addEventListener('DOMContentLoaded', function() {
       const result = await response.json();
 
       if (response.ok) {
-        const redirectURL = `${env.SITE_BASE}/start/book-meeting?agent=${encodeURIComponent(agent)}&fullname=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
-        window.location.href = redirectURL;
-      } else {
+  const currentBaseURL = window.location.origin; 
+  const redirectURL = `${currentBaseURL}/start/book-meeting?agent=${encodeURIComponent(agent)}&fullname=${encodeURIComponent(fullName)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}`;
+  window.location.href = redirectURL;
+}else {
         alert('Failed to send booking request: ' + (result.error || 'Unknown error'));
       }
     } catch (error) {
