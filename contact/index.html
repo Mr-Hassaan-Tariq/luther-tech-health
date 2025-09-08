@@ -1021,7 +1021,6 @@
                       <ul></ul>
                     </div>
                     <form
-                      action="https://hyperhq.com/contact/#wpcf7-f613-o1"
                       method="post"
                       class="wpcf7-form init"
                       aria-label="Contact form"
@@ -1149,7 +1148,13 @@
                       </div>
                       <div
                         class="wpcf7-response-output"
+                        id="wpcf7-response-output"
                         aria-hidden="true"
+                        style="
+                          margin-top: 15px;
+                          font-weight: 500;
+                          color: #00d084;
+                        "
                       ></div>
                     </form>
                   </div>
@@ -1167,8 +1172,8 @@
                       const submitButton = form.querySelector(".wpcf7-submit");
 
                       form.addEventListener("submit", async function (e) {
-                        e.preventDefault(); // Prevent default form submission
-                        responseDiv.textContent = ""; // Clear previous messages
+                        e.preventDefault();
+                        responseDiv.textContent = "";
                         responseDiv.style.color = "black";
 
                         // Get form values
@@ -1224,6 +1229,11 @@
                               "Your request has been sent successfully!";
                             responseDiv.style.color = "green";
                             form.reset();
+                            const currentURL = window.location.href.replace(
+                              /\/$/,
+                              ""
+                            );
+                            window.location.href = currentURL + "/thank-you";
                           } else {
                             responseDiv.textContent =
                               "Failed to send request: " +
@@ -1245,8 +1255,7 @@
                   <script>
                     document.addEventListener('wpcf7mailsent', function(event) {
                       if (event.detail.contactFormId == ) {
-                        const currentURL = window.location.href.replace(/\/$/, '');
-                        window.location.href = currentURL + '/thank-you';
+
                       }
                     }, false);
                   </script>
