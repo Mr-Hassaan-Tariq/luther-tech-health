@@ -1453,6 +1453,11 @@
                     >
                       Request now
                     </button>
+
+                    <div
+                      id="form_message"
+                      style="margin-top: 15px; font-weight: 500; color: #00d084"
+                    ></div>
                   </form>
                 </div>
               </div>
@@ -1465,6 +1470,7 @@
             const emailInput = document.getElementById("email");
             const phoneInput = document.getElementById("phone_number");
             const submitBtn = document.getElementById("submit_button");
+            const formMessage = document.getElementById("form_message");
 
             const fields = {
               full_name: {
@@ -1559,19 +1565,23 @@
                 const result = await response.json();
 
                 if (response.ok) {
-                  alert("Your request has been sent successfully!");
+                  formMessage.textContent =
+                    "Your request has been sent successfully!";
+                  formMessage.style.color = "green";
                   nameInput.value = "";
                   emailInput.value = "";
                   phoneInput.value = "";
                 } else {
-                  alert(
+                  formMessage.textContent =
                     "Failed to send request: " +
-                      (result.error || "Unknown error")
-                  );
+                    (result.error || "Unknown error");
+                  formMessage.style.color = "red";
                 }
               } catch (error) {
                 console.error("Error sending request:", error);
-                alert("Something went wrong. Please try again later.");
+                formMessage.textContent =
+                  "Something went wrong. Please try again later.";
+                formMessage.style.color = "red";
               }
             });
           </script>
