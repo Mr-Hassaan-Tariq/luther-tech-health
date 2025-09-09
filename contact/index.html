@@ -1146,15 +1146,21 @@
                           />
                         </p>
                       </div>
+
                       <div
-                        class="wpcf7-response-output"
-                        id="wpcf7-response-output"
+                        class="custom-response"
+                        id="custom-response"
                         aria-hidden="true"
                         style="
                           margin-top: 15px;
                           font-weight: 500;
                           color: #00d084;
                         "
+                      ></div>
+
+                      <div
+                        class="wpcf7-response-output"
+                        id="wpcf7-response-output"
                       ></div>
                     </form>
                   </div>
@@ -1168,9 +1174,9 @@
                       const form = document.querySelector(".wpcf7-form");
                       if (!form) return;
 
-                      const responseDiv = form.querySelector(
-                        ".wpcf7-response-output"
-                      );
+                      const responseDiv =
+                        form.querySelector("#custom-response");
+
                       const submitButton = form.querySelector(".wpcf7-submit");
 
                       form.addEventListener("submit", async function (e) {
@@ -1192,6 +1198,9 @@
                           .querySelector('[name="your-phone"]')
                           .value.trim();
                         const fullName = `${firstName} ${lastName}`.trim();
+
+                        const agent =
+                          form.querySelector('[name="agent"]')?.value || "";
 
                         // Basic validation
                         if (!firstName || !lastName || !email || !phone) {
@@ -1232,15 +1241,15 @@
                           const result = await response.json();
 
                           if (response.ok) {
-                            responseDiv.textContent =
-                              "Your request has been sent successfully!";
-                            responseDiv.style.color = "green";
-                            form.reset();
-                            // const currentURL = window.location.href.replace(
-                            //   /\/$/,
-                            //   ""
-                            // );
-                            // window.location.href = currentURL + "/thank-you";
+                            const currentBaseURL = window.location.origin;
+                            const redirectURL = `${currentBaseURL}/start/book-meeting?agent=${encodeURIComponent(
+                              agent
+                            )}&fullname=${encodeURIComponent(
+                              fullName
+                            )}&email=${encodeURIComponent(
+                              email
+                            )}&phone=${encodeURIComponent(phone)}`;
+                            window.location.href = redirectURL;
                           } else {
                             responseDiv.textContent =
                               "Failed to send request: " +
@@ -1259,13 +1268,13 @@
                       });
                     });
                   </script>
-                  <script>
+                  <!-- <script>
                     document.addEventListener('wpcf7mailsent', function(event) {
                       if (event.detail.contactFormId == ) {
 
                       }
                     }, false);
-                  </script>
+                  </script> -->
                 </div>
               </div>
             </div>
